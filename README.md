@@ -1,24 +1,25 @@
-# README
+# OVERVIEW
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The purpose of appProvider is to receive a sales text file from the company, accept an upload of that text file and store it in the database.
 
-Things you may want to cover:
+## CONFIGURING AN ENVIRONMENT
 
-* Ruby version
+The <a href="https://guides.rubyonrails.org/"> Ruby on Rails Guides </a> will provide instructions to help you install and confirm and use Ruby on Rails.
 
-* System dependencies
+After installing and configuring Ruby on Rails, clone the <a href="https://github.com/matheusmarquess03/appProvider"> project </a> on your development computer.
 
-* Configuration
+To run the application on your computer, proceed as follows:
 
-* Database creation
+   <ol>
+      <li> cd < directory where you cloned the project repository to > </li>
+      <li> Update your database configuration at config / database.yml </li>
+      <li> rails db: create (to create a database) </li>
+      <li> rails db: migrate </li>
+      <li> Rails server </li>
+      <li> load http: // localhost: 3000 in your web browser. </li>
+   </ol>
 
-* Database initialization
 
-* How to run the test suite
+## OPERATION
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The operation is very simple, just choose the file requested and choose the option "import file" and you will have the result on your screen.
