@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  buyer: MyString
+  descriçao: MyString
+  unit_price: 1.5
+  quantity: 1
+  address: MyString
+  supplier: MyString
+
+two:
+  buyer: MyString
+  descriçao: MyString
+  unit_price: 1.5
+  quantity: 1
+  address: MyString
+  supplier: MyString

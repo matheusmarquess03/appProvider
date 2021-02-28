@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Providers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Buyer</th>
+      <th>Description</th>
+      <th>Unit price</th>
+      <th>Quantity</th>
+      <th>Address</th>
+      <th>Supplier</th>
+      <th>Gross Revenue</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @providers.each do |provider| %>
+      <tr>
+        <td><%= provider.buyer %></td>
+        <td><%= provider.description %></td>
+        <td><%= provider.unit_price %></td>
+        <td><%= provider.quantity %></td>
+        <td><%= provider.address %></td>
+        <td><%= provider.supplier %></td>
+        <td><%=@retorno%></td>           
+        <td><%= link_to 'Show', provider %></td>
+        <td><%= link_to 'Edit', edit_provider_path(provider) %></td>
+        <td><%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h3>Import Provider</h3>
+<%= form_tag import_providers_path, multipart: true do %>
+  <%= file_field_tag :file%>
+  <%= submit_tag "Upload Providers" %>
+<% end %>  
+
+<%= link_to 'New Provider', new_provider_path %>
