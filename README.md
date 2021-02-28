@@ -2,7 +2,7 @@
 
 The purpose of appProvider is to receive a sales text file from the company, accept an upload of that text file and store it in the database.
 
-## SETTING UO AN ENVIRONMENT
+## SETTING UP AN ENVIRONMENT
 
 
 The <a href="https://guides.rubyonrails.org/"> Ruby on Rails Guides </a> will provide instructions to help you install and confirm and use Ruby on Rails.
