@@ -31,10 +31,10 @@ RSpec.describe Provider, :type => :model do
     end
 
     it 'return cannot be blank' do
-        provider = Provider.new(buyer: 'Matheus Marques', description: nil, unit_price: 10.00, quantity: 2, address: 'Av Copacabana, 120', supplier: 'Cacau Show')
-        provider.valid?
-        expect(provider.errors[:description]).to include ("can't be blank")      
-      end
+      provider = Provider.new(buyer: 'Matheus Marques', description: nil, unit_price: 10.00, quantity: 2, address: 'Av Copacabana, 120', supplier: 'Cacau Show')
+      provider.valid?
+      expect(provider.errors[:description]).to include ("can't be blank")      
+    end
   end
   
   context "validate product value" do

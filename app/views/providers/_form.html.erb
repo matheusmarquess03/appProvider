@@ -1,37 +1,49 @@
 <%= form_with(model: provider) do |form| %>
- 
 
-  <div class="field">
-    <%= form.label :buyer %>
-    <%= form.text_field :buyer %>
-  </div>
+<div class="field">
+    <%= form.label :buyer, class: 'label' %>
+    <div class="control">
+        <%= form.text_field :buyer, class: 'input' %>
+    </div>
+</div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
+<div class="field">
+    <%= form.label :description, class: 'label' %>
+    <div class="control">
+        <%= form.text_field :description, class: 'input' %>
+    </div>
+</div>
 
-  <div class="field">
-    <%= form.label :unit_price %>
-    <%= form.text_field :unit_price %>
-  </div>
+<div class="field">
+    <%= form.label :unit_price, class: 'label' %>
+    <div class="control">
+        <%= form.text_field :unit_price, class: 'input' %>
+    </div>
+</div>
 
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
-  </div>
+<div class="field">
+    <%= form.label :quantity, class: 'label' %>
+    <div class="control">
+        <%= form.number_field :quantity, class: 'input' %>
+    </div>
+</div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
+<div class="field">
+    <%= form.label :address, class: 'label' %>
+    <div class="control">
+        <%= form.text_field :address, class: 'input' %>
+    </div>
+</div>
 
-  <div class="field">
-    <%= form.label :supplier %>
-    <%= form.text_field :supplier %>
-  </div>
+<div class="field">
+    <%= form.label :supplier, class: 'label' %>
+    <div class="control">
+        <%= form.text_field :supplier, class: 'input' %>
+    </div>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="control">
+    <button class="button is-primary">Submit</button>
+</div>
+<br>
 <% end %>

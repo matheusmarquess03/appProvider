@@ -1,45 +1,66 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
 
-<h1>Providers</h1>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
 
-<table>
-  <thead>
-    <tr>
-      <th>Buyer</th>
-      <th>Description</th>
-      <th>Unit price</th>
-      <th>Quantity</th>
-      <th>Address</th>
-      <th>Supplier</th>
-      <th>Gross Revenue</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<nav class="panel">
+    <div class="panel-block">
+        <%= form_tag import_providers_path, multipart: true do %>
+          <%= file_field_tag :file%>
+        <%= submit_tag "Importe File", class: 'button is-primary' %>
+        <% end %>
+    </div>
+    <p class="panel-heading">
+        Data Table
+    </p>
+    <div class="panel-block">
 
-  <tbody>
-    <% @providers.each do |provider| %>
-      <tr>
-        <td><%= provider.buyer %></td>
-        <td><%= provider.description %></td>
-        <td><%= provider.unit_price %></td>
-        <td><%= provider.quantity %></td>
-        <td><%= provider.address %></td>
-        <td><%= provider.supplier %></td>
-        <td><%=@retorno%></td>           
-        <td><%= link_to 'Show', provider %></td>
-        <td><%= link_to 'Edit', edit_provider_path(provider) %></td>
-        <td><%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <body>
+            <table class="table is-hoverable">
+                <thead>
+                    <tr>
+                        <th>Buyer</th>
+                        <th>Description</th>
+                        <th>Unit price</th>
+                        <th>Quantity</th>
+                        <th>Address</th>
+                        <th>Supplier</th>
+                        <th>Gross Revenue</th>
+                        <th colspan="3"></th>
+                    </tr>
+                </thead>
 
-<br>
+                <tbody>
+                    <% @providers.each do |provider| %>
+                    <tr>
+                        <td><%= provider.buyer %></td>
+                        <td><%= provider.description %></td>
+                        <td><%= provider.unit_price %></td>
+                        <td><%= provider.quantity %></td>
+                        <td><%= provider.address %></td>
+                        <td><%= provider.supplier %></td>
+                        <td><%=@retorno%></td>
+                        <td><%= link_to provider, class: 'btn btn-outline btn-success' do %>
+                            <i class="fas fa-eye"></i><% end %>
+                        </td>
+                        <td><%= link_to edit_provider_path(provider), class: 'btn btn-outline btn-success' do  %>
+                            <i class="fas fa-edit	"></i><% end %>
+                        </td>
+                        <td><%= link_to provider, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline btn-success' do  %>
+                            <i class="fas fa-ban"></i><% end %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </body>
+    </div>
 
-<h3>Import Provider</h3>
-<%= form_tag import_providers_path, multipart: true do %>
-  <%= file_field_tag :file%>
-  <%= submit_tag "Upload Providers" %>
-<% end %>  
+</nav>
 
-<%= link_to 'New Provider', new_provider_path %>
+</html>

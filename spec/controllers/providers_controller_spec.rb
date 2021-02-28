@@ -15,12 +15,12 @@ RSpec.describe ProvidersController, :type => :controller do
      end
   end
    
-     context "GET #show" do
-        let(:provider) { create(:provider)  }
-        it "should sucess and render to edit page" do
-        get :show, params: {id: provider.id}
-        expect(response).to have_http_status(200)
-        expect(response).to render_template(:show)    
+  context "GET #show" do
+    let(:provider) { create(:provider)  }
+    it "should sucess and render to edit page" do
+      get :show, params: {id: provider.id}
+      expect(response).to have_http_status(200)
+      expect(response).to render_template(:show)    
     end 
      
     it "where have id" do
@@ -30,81 +30,79 @@ RSpec.describe ProvidersController, :type => :controller do
     end
   end
 
-    context "GET #new" do
-      it "should sucess and render to new page" do
-        get :new
-        expect(response).to have_http_status(200)
-        expect(response).to render_template(:new)      
+  context "GET #new" do
+    it "should sucess and render to new page" do
+      get :new
+      expect(response).to have_http_status(200)
+      expect(response).to render_template(:new)      
     end
 
     it "should new post" do
-        get :new
-        expect(assigns(:provider)).to be_a(Provider)
-        expect(assigns(:provider)).to be_a_new(Provider)    
+      get :new
+      expect(assigns(:provider)).to be_a(Provider)
+      expect(assigns(:provider)).to be_a_new(Provider)    
     end
   end
 
-    context "GET #edit" do
-        let(:provider) { create(:provider)  }
-        it "should sucess and render to edit page" do
-            get :edit, params: {id: provider.id }
-            expect(response).to render_template(:edit)
+  context "GET #edit" do
+    let(:provider) { create(:provider)  }
+    it "should sucess and render to edit page" do
+      get :edit, params: {id: provider.id }
+      expect(response).to render_template(:edit)
             expect(assigns(:provider)).to be_a(Provider)    
-        end   
-    end
+    end   
+  end
     
   
-    context "POST #create " do
-        let!(:params) {
-        { buyer: 'Matheus Marques', description: 'R$20 Chocolate for R$5', unit_price: 10.00, quantity: 2, address: 'Av Copacabana, 120', supplier: 'Cacau Show' }
-        }
-        it "create a new post" do
-            post :create, params: { provider: params }
-            expect(flash[:notice]).to eq("Provider was successfully created.")
-            expect(response).to redirect_to(action: :show, id: assigns(:provider).id)    
-        end
-
-        it "not create a new post " do
-          params =  { buyer: 'Matheus Marques', description: 'R$20 Chocolate for R$5'}
-          post :create, params: { provider: params}
-          expect(response).to render_template("new") 
-        end
+  context "POST #create " do
+    let!(:params) {
+      { buyer: 'Matheus Marques', description: 'R$20 Chocolate for R$5', unit_price: 10.00, quantity: 2, address: 'Av Copacabana, 120', supplier: 'Cacau Show' }
+      }
+    it "create a new post" do
+      post :create, params: { provider: params }
+      expect(flash[:notice]).to eq("Provider was successfully created.")
+      expect(response).to redirect_to(action: :show, id: assigns(:provider).id)    
     end
+
+    it "not create a new post " do
+      params =  { buyer: 'Matheus Marques', description: 'R$20 Chocolate for R$5'}
+      post :create, params: { provider: params}
+      expect(response).to render_template("new") 
+    end
+  end
     
-    context "PUT #update" do
-        let!(:provider) { create(:provider) }
+  context "PUT #update" do
+    let!(:provider) { create(:provider) }
         
-        it "should update provider info" do
-           params =  { buyer: 'Update Matheus Marques'}
-
-           patch :update, params: { id: provider.id, provider: params }
-           provider.reload
-
-           expect(provider.buyer).to eq(params[:buyer])
-           expect(flash[:notice]).to eq("Provider was successfully updated.")
-           expect(response).to redirect_to(action: :show, id: assigns(:provider).id)      
-        end
+    it "should update provider info" do
+      params =  { buyer: 'Update Matheus Marques'}
+      patch :update, params: { id: provider.id, provider: params }
+      provider.reload
+      expect(provider.buyer).to eq(params[:buyer])
+      expect(flash[:notice]).to eq("Provider was successfully updated.")
+      expect(response).to redirect_to(action: :show, id: assigns(:provider).id)      
+    end
         
-        it "should not update post info" do 
-            params = { buyer: nil }
+    it "should not update post info" do 
+      params = { buyer: nil }
 
-            put :update, params: { id: provider.id, provider: params}
+      put :update, params: { id: provider.id, provider: params}
 
-            expect(response).to render_template(:edit) 
-        end    
-    end
+      expect(response).to render_template(:edit) 
+    end    
+  end
     
-    context "DELETE #destroy" do
-        let!(:provider) { create(:provider)}
+  context "DELETE #destroy" do
+    let!(:provider) { create(:provider)}
 
-        it "should dele provider" do
-            delete :destroy, params: { id: provider.id}
-            expect(flash[:notice]).to eq("Provider was successfully destroyed.")
-            expect(response).to redirect_to(action: :index)
-        end  
-    end
+    it "should dele provider" do
+      delete :destroy, params: { id: provider.id}
+      expect(flash[:notice]).to eq("Provider was successfully destroyed.")
+      expect(response).to redirect_to(action: :index)
+    end  
+  end
     
-    before :each do
-        @file = fixture_file_upload('/home/matheus/Downloads/dados.txt')
-      end
+  before :each do
+    @file = fixture_file_upload('/home/matheus/Downloads/dados.txt')
+  end
 end

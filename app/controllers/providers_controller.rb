@@ -20,20 +20,19 @@ class ProvidersController < ApplicationController
   def create
     @provider = Provider.new(provider_params)
 
-    
-      if @provider.save
-        flash[:notice] = "Provider was successfully created."
-        redirect_to action: :show, id: @provider.id
-      else
-        render :new
-      end
+    if @provider.save
+      flash[:notice] = "Provider was successfully created."
+      redirect_to action: :show, id: @provider.id
+    else
+      render :new
+    end
   end
 
   def update
     @provider = Provider.find(params[:id])
       if @provider.update(provider_params)
-         flash[:notice] = "Provider was successfully updated." 
-         redirect_to @provider, id: @provider.id
+        flash[:notice] = "Provider was successfully updated." 
+        redirect_to @provider, id: @provider.id
       else
         render :edit
       end
@@ -41,30 +40,27 @@ class ProvidersController < ApplicationController
 
   def destroy
     @provider.destroy
-     flash[:notice] = "Provider was successfully destroyed." 
-     redirect_to action: :index
-    end
+      flash[:notice] = "Provider was successfully destroyed." 
+      redirect_to action: :index
+  end
     
     
-    def import
-      Provider.import(params[:file])
-      redirect_to providers_path, notice: "File was successfully Imported."
-    end
+  def import
+    Provider.import(params[:file])
+    redirect_to providers_path, notice: "File was successfully Imported."
+  end
   
-    def retornaTotal
-  
-          @retorno = Provider.calculate_total
-          # Essa variável é um vetor que tem todas as linhas com apenas uma coluna que é o "total"
-          # Se precisa também retornar a descrição, teria que adicionar no select do scope a coluna descrição
-      end
+  def retornaTotal
+    @retorno = Provider.calculate_total
+  end
 
   private
-      # Use callbacks to share common setup or constraints between actions.
-      def set_provider
-        @provider = Provider.find(params[:id])
-      end
       
-      def provider_params
-        params.require(:provider).permit(:buyer, :description, :unit_price, :quantity, :address, :supplier)
-      end
+  def set_provider
+    @provider = Provider.find(params[:id])
+  end
+      
+  def provider_params
+    params.require(:provider).permit(:buyer, :description, :unit_price, :quantity, :address, :supplier)
+  end
 end
